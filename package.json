@@ -20,5 +20,12 @@
   "homepage": "https://github.com/RubyGe/launchschool_test#readme",
   "dependencies": {
     "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.12.1",
+    "eslint-cli": "^1.1.1",
+    "globals": "^16.3.0"
   }
 }

@@ -1,0 +1,6 @@
+{
+  "firstNumber": "What is the first number?",
+  "secondNumber": "What is the second number?",
+  "operation": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
+  "anotherCalculation": "Would you like another calculation? y/n"
+}

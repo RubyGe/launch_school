@@ -3,7 +3,7 @@
 // Perform the operation on the two numbers.
 // Print the result to the terminal.
 
-const config = require('./calculator_messages.json');
+const MESSAGES = require('./calculator_messages.json');
 
 const readline = require("readline-sync");
 
@@ -20,17 +20,15 @@ function invalidNumber(number) {
 let another_cal = true;
 
 while (another_cal) {
-  prompt("What's the first number?");
+  prompt(MESSAGES.firstNumber);
 
   let number1 = readline.question();
 
-  prompt("What's the second number?");
+  prompt(MESSAGES.secondNumber);
 
   let number2 = readline.question();
 
-  prompt(
-    "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide"
-  );
+  prompt(MESSAGES.operation);
 
   let operation = readline.question();
 
@@ -46,9 +44,9 @@ while (another_cal) {
     output = Number(number1) / Number(number2);
   }
 
-  console.log(output);
+  prompt(output);
 
-  console.log("another calculation? y/n")
+  prompt(MESSAGES.anotherCalculation);
 
   switch (readline.question()[0].toLowerCase()){
     case "y":

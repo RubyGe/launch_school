@@ -1,5 +1,6 @@
 {
   "en": {
+    "welcome": "Welcome to the calculator!",
     "firstNumber": "What is the first number?",
     "secondNumber": "What is the second number?",
     "operation": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
@@ -8,6 +9,7 @@
     "invalidOperation": "The operation you entered is not valid. Please enter a valid operation"
   },
   "cn": {
+    "welcome": "欢迎来到计算器！",
     "firstNumber": "第一个数字是什么？",
     "secondNumber": "第二个数字是什么？",
     "operation": "你想进行什么算法？1）加法 2）减法 3）乘法 4）除法",

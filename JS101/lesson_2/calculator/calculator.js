@@ -7,7 +7,7 @@ const MESSAGES = require('./calculator_messages.json');
 
 const readline = require("readline-sync");
 
-console.log("Welcome to Calculator!");
+let lang = "en";
 
 function prompt(message) {
   console.log(`=> ${message}`);
@@ -58,10 +58,9 @@ function inputAnotherCalculation(lang = "en") {
 
   while (!input.trimStart()) {
     prompt(MESSAGES[lang].anotherCalculation);
-    let input = readline.question();
+    input = readline.question();
   }
 
-  debugger;
   if (input[0].toLowerCase() === "y") {
     return true;
   } else {
@@ -71,8 +70,9 @@ function inputAnotherCalculation(lang = "en") {
 
 let anotherCal = true;
 
+prompt(MESSAGES[lang].welcome);
+
 while (anotherCal) {
-  let lang = "cn";
   let number1 = inputNumber(1,lang);
   let number2 = inputNumber(2,lang);
   let operation = inputOperation(lang);

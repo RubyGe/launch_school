@@ -17,20 +17,65 @@ function invalidNumber(number) {
   return number.trimStart() === '' || Number.isNaN(Number(number));
 }
 
-let another_cal = true;
+function invalidOperation(operation) {
+  return operation.trimStart() === '' || !(["1", "2", "3", "4"].includes(operation));
+}
 
-while (another_cal) {
-  prompt(MESSAGES.cn.firstNumber);
+function inputNumber(order, lang = "en") {
+  let message;
+  if (order === 1) {
+    message = MESSAGES[lang].firstNumber;
+  } else if (order === 2) {
+    message = MESSAGES[lang].secondNumber;
+  }
 
-  let number1 = readline.question();
+  prompt(message);
+  let number = readline.question();
 
-  prompt(MESSAGES.cn.secondNumber);
+  while (invalidNumber(number)) {
+    prompt(MESSAGES[lang].invalidNumber);
+    number = readline.question();
+  }
 
-  let number2 = readline.question();
+  return number;
+}
 
-  prompt(MESSAGES.cn.operation);
-
+function inputOperation(lang = "en") {
+  prompt(MESSAGES[lang].operation);
   let operation = readline.question();
+
+  while (invalidOperation(operation)) {
+    prompt(MESSAGES[lang].invalidOperation);
+    operation = readline.question();
+  }
+
+  return operation;
+}
+
+function inputAnotherCalculation(lang = "en") {
+  prompt(MESSAGES[lang].anotherCalculation);
+  let input = readline.question();
+
+  while (!input.trimStart()) {
+    prompt(MESSAGES[lang].anotherCalculation);
+    let input = readline.question();
+  }
+
+  debugger;
+  if (input[0].toLowerCase() === "y") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+let anotherCal = true;
+
+while (anotherCal) {
+  let lang = "cn";
+  let number1 = inputNumber(1,lang);
+  let number2 = inputNumber(2,lang);
+  let operation = inputOperation(lang);
 
   let output;
 
@@ -46,19 +91,7 @@ while (another_cal) {
 
   prompt(output);
 
-  prompt(MESSAGES.cn.anotherCalculation);
-
-  switch (readline.question()[0].toLowerCase()){
-    case "y":
-      another_cal = true;
-      break;
-    case "n":
-      another_cal = false;
-      break;
-    default:
-      another_cal = false;
-      break;
-  }
+  anotherCal = inputAnotherCalculation(lang);
 
 }
 

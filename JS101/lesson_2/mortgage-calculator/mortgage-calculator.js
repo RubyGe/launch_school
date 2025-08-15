@@ -7,13 +7,14 @@
 // calculate using m = p * (j / (1 - Math.pow((1 + j), (-n))));
 
 const readline = require("readline-sync");
+const MONTHS_PER_YEAR = 12;
+const PERCENTAGE_DIVISOR = 100;
 
 function prompt(message) {
   console.log(`=> ${message}`);
 }
 
 function invalidNumber(input) {
-  debugger;
   return input.trimStart() === '' || Number.isNaN(Number(input)) || Number(input) < 0;
 }
 
@@ -22,7 +23,7 @@ function getLoanAmount() {
   let amount = readline.question();
 
   while (invalidNumber(amount)) {
-    prompt("Your input is not a valid number. Please enter a valid number without the $ sign");
+    prompt("Your input is not a valid number. Please enter a valid positive number without the $ sign");
     amount = readline.question();
   }
 
@@ -34,14 +35,14 @@ function getMonthlyInterestRate() {
   let annualPercentageRate = readline.question();
 
   while (invalidNumber(annualPercentageRate)) {
-    prompt("Your input is not a valid number. Please enter a valid number without the $ sign");
+    prompt("Your input is not a valid number. Please enter a valid annual percentage rate.");
     annualPercentageRate = readline.question();
   }
 
   if (Number(annualPercentageRate) === 0) {
     return 0;
   } else {
-      return Number(annualPercentageRate) / 100 / 12;
+      return Number(annualPercentageRate) / PERCENTAGE_DIVISOR / MONTHS_PER_YEAR;
   }
 }
 
@@ -50,17 +51,29 @@ function getLoanDurationInMonths() {
   let loanDurationInYear = readline.question();
 
   while (invalidNumber(loanDurationInYear)) {
-    prompt("Your input is not a valid number. Please enter a valid number without the $ sign");
+    prompt("Your input is not a valid number. Please enter a valid positive number.");
     loanDurationInYear = readline.question();
   }
 
-  return loanDurationInYear * 12;
+  return loanDurationInYear * MONTHS_PER_YEAR;
 }
 
-let loanAmount = getLoanAmount();
-let monthlyInterestRate = getMonthlyInterestRate();
-let loanDurationInMonths = getLoanDurationInMonths();
+function runLoanCalculator() {
+  console.clear();
 
-let monthlyPayment = loanAmount * (monthlyInterestRate / (1 - Math.pow((1 + monthlyInterestRate), (0-loanDurationInMonths))));
+  let loanAmount = getLoanAmount();
+  let monthlyInterestRate = getMonthlyInterestRate();
+  let loanDurationInMonths = getLoanDurationInMonths();
 
-prompt(`With a loan amount of $${loanAmount}, monthly interest rate of ${(monthlyInterestRate * 100).toFixed(2)}%, and ${loanDurationInMonths} months of loan duration\nYour monthly payment amount is $${monthlyPayment.toFixed(2)}`);
+  let monthlyPayment = loanAmount * (monthlyInterestRate / (1 - Math.pow((1 + monthlyInterestRate), (0-loanDurationInMonths))));
+
+  prompt(`With a loan amount of $${loanAmount}, monthly interest rate of ${(monthlyInterestRate * PERCENTAGE_DIVISOR).toFixed(2)}%, and ${loanDurationInMonths} months of loan duration\nYour monthly payment amount is $${monthlyPayment.toFixed(2)}`);
+}
+
+while (true) {
+  runLoanCalculator();
+  prompt("Would you like to run another calculation?");
+  if (readline.question()[0].toLowerCase() !== 'y') {
+    break;
+  }
+}

@@ -1,6 +1,15 @@
 {
-  "firstNumber": "What is the first number?",
-  "secondNumber": "What is the second number?",
-  "operation": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
-  "anotherCalculation": "Would you like another calculation? y/n"
+  "en": {
+    "firstNumber": "What is the first number?",
+    "secondNumber": "What is the second number?",
+    "operation": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
+    "anotherCalculation": "Would you like another calculation? y/n"
+  },
+  "cn": {
+    "firstNumber": "第一个数字是什么？",
+    "secondNumber": "第二个数字是什么？",
+    "operation": "你想进行什么算法？1）加法 2）减法 3）乘法 4）除法",
+    "anotherCalculation": "你想进行另一个计算么？(y/n)"
+  }
+
 }

@@ -20,15 +20,15 @@ function invalidNumber(number) {
 let another_cal = true;
 
 while (another_cal) {
-  prompt(MESSAGES.firstNumber);
+  prompt(MESSAGES.cn.firstNumber);
 
   let number1 = readline.question();
 
-  prompt(MESSAGES.secondNumber);
+  prompt(MESSAGES.cn.secondNumber);
 
   let number2 = readline.question();
 
-  prompt(MESSAGES.operation);
+  prompt(MESSAGES.cn.operation);
 
   let operation = readline.question();
 
@@ -46,7 +46,7 @@ while (another_cal) {
 
   prompt(output);
 
-  prompt(MESSAGES.anotherCalculation);
+  prompt(MESSAGES.cn.anotherCalculation);
 
   switch (readline.question()[0].toLowerCase()){
     case "y":

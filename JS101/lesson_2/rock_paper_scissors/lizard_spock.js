@@ -6,6 +6,9 @@ const VALID_CHOICES = {
   l: 'lizard',
   sp: 'spock'
 };
+
+const WINNING_ROUNDS = 3;
+
 // initialize computer and user score;
 let scores = {
   user: 0,
@@ -78,7 +81,7 @@ while (true) {
   displayScores(scores);
 
   // decide and display grand winner if any
-  if (scores.user === 3) {
+  if (scores.user === WINNING_ROUNDS) {
     prompt("User win the game!");
     break;
   } else if (scores.computer === 3) {
